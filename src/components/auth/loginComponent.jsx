@@ -7,12 +7,17 @@ const Login = (props) => {
     const authContext = useContext(AuthContext);
 
     const {setAlert} = alertContext;
-    const {logIn,error,errFlag,clearErrors,isAuthenticated} = authContext;
+    const {isAdmin,logIn,error,errFlag,clearErrors,isAuthenticated} = authContext;
     const loginBtn = document.querySelector("#loginBtn");
 
     useEffect(() => {
         if(isAuthenticated) {
-            props.history.push('/');
+            if(isAdmin) {
+                props.history.push('/admin');
+            }else {
+                props.history.push('/');
+            }
+           
         }else {
             if(errFlag) {
                 loginBtn.current.value = "Login";

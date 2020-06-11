@@ -6,9 +6,12 @@ import Alerts from './components/layout/alertsComponent';
 import Home from './components/pages/homeComponent';
 import Register from './components/auth/registerComponent';
 import Login from './components/auth/loginComponent';
+import About from '../src/components/pages/aboutComponent';
+import Admin from '../src/components/admin/adminComponent';
+
 import setAuthToken from '../src/utils/setAuthToken';
 import PrivateRoute from '../src/components/routing/privateRouteComponent';
-import About from '../src/components/pages/aboutComponent';
+import AdminRoute from '../src/components/routing/adminRouteComponent';
 
 
 //import context providers
@@ -40,9 +43,10 @@ const App =() => {
                             <Fragment>
                               <NavBar />
                                 <Alerts />
-                                <Switch>
+                                <Switch> 
                                     <PrivateRoute exact path="/about" component={About}/> 
                                     <PrivateRoute exact path="/" component={Home}/> 
+                                    <AdminRoute exact path="/admin" component={Admin}/> 
                                     <Route exact path="/register" component={Register}/> 
                                     <Route exact path="/login" component={Login}/> 
                                     <Route component={NotFound} />

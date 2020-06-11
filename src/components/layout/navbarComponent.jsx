@@ -7,7 +7,7 @@ import ContactContext from '../../context/contact/contactContext';
 const NavBar =() => {
   const authContext = useContext(AuthContext);
   const contactContext = useContext(ContactContext);
-  const {isAuthenticated,logOut,token} = authContext;
+  const {isAuthenticated,logOut,token,isAdmin} = authContext;
   const {clearContacts} = contactContext;
 
   const onLogOut = () => {
@@ -25,10 +25,22 @@ const NavBar =() => {
   const authLinks = (
     <Fragment>
        <Link className="navbar-brand" to="/">Home</Link>
-       <Link className="navbar-brand" to="/about">About</Link>
+       <Link className="navbar-brand" to="/about">About{isAdmin}</Link>
+       <Link className="navbar-brand" to="/admin">test Admin</Link>
        <Link className="navbar-brand" onClick={onLogOut} to="#">Logout</Link>
     </Fragment>
   );
+
+  const adminLinks = (
+    <Fragment>
+       <Link className="navbar-brand" to="/about">Dashboard</Link>
+       <Link className="navbar-brand" to="/">test user</Link>
+       <Link className="navbar-brand" onClick={onLogOut} to="#">Logout</Link>
+    </Fragment>
+  );
+
+  
+
 
 
   return (
@@ -40,7 +52,10 @@ const NavBar =() => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
               <div className="navbar-nav">
-                 { (!token && !isAuthenticated ) ?  guestLinks : authLinks }
+                 {/* { (!token && !isAuthenticated ) ?  guestLinks : authLinks } */}
+                 { (!token && !isAuthenticated ) &&  guestLinks }
+                 { (token && isAuthenticated && !isAdmin ) && authLinks }
+                 { (token && isAuthenticated && isAdmin ) && adminLinks }
               </div>
            </div>
 </nav> 

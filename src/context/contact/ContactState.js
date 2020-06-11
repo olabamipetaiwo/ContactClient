@@ -43,7 +43,8 @@ const ContactState = (props) => {
         }
 
        try {
-        const res = await Axios.get("http://localhost:5000/api/contact/"+userId); 
+        const res = await Axios.get("http://localhost:5000/api/contact/"+userId);
+        // const res = await Axios.get("https://conkep.herokuapp.com/api/contact/"+userId); 
         dispatch({
             type:LOAD_CONTACTS,
             payload:res.data.contacts
@@ -72,8 +73,8 @@ const ContactState = (props) => {
         }
 
        try {
-        console.log(contact);
-        const res = await Axios.post('http://localhost:5000/api/contact',contact);
+        const res = await Axios.post("http://localhost:5000/api/contact/",contact);
+        // const res = await Axios.post('https://conkep.herokuapp.com/api/contact',contact);
         dispatch({
             type:ADD_CONTACT,
             payload:res.data.contact
@@ -92,6 +93,7 @@ const ContactState = (props) => {
     const deleteContact =async (id) => { 
         try {
             const res = await Axios.delete("http://localhost:5000/api/contact/"+id);
+            // const res = await Axios.delete("https://conkep.herokuapp.com/api/contact/"+id);
             dispatch({
                 type:DELETE_CONTACT,
                 payload:res.data.contact
@@ -131,8 +133,8 @@ const ContactState = (props) => {
         }
        
        try {
-        const res = await Axios.patch("http://localhost:5000/api/contact/"+id,contact); 
-        console.log(id," identifies: ", res.data.contact)
+        const res = await Axios.patch("http://localhost:5000/api/contact/"+id,contact);
+        // const res = await Axios.patch("https://conkep.herokuapp.com/api/contact/"+id,contact); 
         dispatch({
             type:UPDATE_CONTACT,
             payload:res.data.contact

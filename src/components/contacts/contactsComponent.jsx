@@ -1,6 +1,6 @@
 import React,{Fragment,useContext} from 'react';
 import ContactItem from './contactItemComponent';
-import {CSSTransition,TransitionGroup} from 'react-transition-group';
+import {TransitionGroup} from 'react-transition-group';
 import ContactContext from '../../context/contact/contactContext';
 
 const Contacts =() => {
