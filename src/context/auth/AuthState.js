@@ -36,8 +36,8 @@ const AuthState = (props) => {
             setAuthToken(localStorage.token);
         }
        try {
-        const res = await Axios.get('http://localhost:5000/api/auth');
-        // const res = await Axios.get('https://conkep.herokuapp.com/api/auth');
+        // const res = await Axios.get('http://localhost:5000/api/auth');
+        const res = await Axios.get('https://conkep.herokuapp.com/api/auth');
         dispatch({
             type:USER_LOADED,
             payload: res.data.user
@@ -53,8 +53,8 @@ const AuthState = (props) => {
     const registerUser = async (user) => {
 
         try {
-            const res = await Axios.post('http://localhost:5000/api/user',user);
-            // const res = await Axios.post('https://conkep.herokuapp.com/api/user',user);
+            // const res = await Axios.post('http://localhost:5000/api/user',user);
+            const res = await Axios.post('https://conkep.herokuapp.com/api/user',user);
             dispatch({
                 type:REGISTER_SUCCESS,
                 payload: res.data
@@ -72,8 +72,8 @@ const AuthState = (props) => {
     //login user
     const logIn = async (user) =>  {
         try {
-            const res = await Axios.post('http://localhost:5000/api/auth',user);
-            // const res = await Axios.post('https://conkep.herokuapp.com/api/auth',user);
+            // const res = await Axios.post('http://localhost:5000/api/auth',user);
+            const res = await Axios.post('https://conkep.herokuapp.com/api/auth',user);
             dispatch({
                 type:LOGIN_SUCCESS,
                 payload: res.data
